@@ -62,7 +62,8 @@ const ShoppingTotal = () => {
   );
 
   const handleClearClick = () => dispatch(resetAll());
-  const handleCheckOutClick = () => window.alert(total);
+  const handleCheckOutClick = () =>
+    window.alert(`Thank you for your order. The total is £${total}`);
 
   const isEmpty = total === 0;
 

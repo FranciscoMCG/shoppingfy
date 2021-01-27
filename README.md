@@ -32,6 +32,7 @@ Due to the short time constraint I'd like to leave the following considerations:
 - TypeScript. I'm used to have a separate file `d.ts` for all types. eg. for `Button.tsx` I would have `Button.d.ts`
 - Alert. I would have built a good looking modal to handle the Check Out.
 - State. I would have thought better about the naming convention and the shape of those objects. Ideally I would have store more data than just the quantity and total price
+- Currency. I should have handled the currency dynamically with the data I got from the api  
 - A11y. Not built with A11y in mind
 - Responsiveness. Built only with basic responsiveness for large mobile and desktop
 
