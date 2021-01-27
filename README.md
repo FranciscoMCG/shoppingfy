@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Shoppingfy 🛍 
 
-## Available Scripts
 
-In the project directory, you can run:
+</div>
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- TABLE OF CONTENTS -->
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Table of Contents
 
-### `yarn test`
+- [About the project](#about-the-project)
+- [Considerations](#considerations)
+- [Installation](#installation)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## About the project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Shoppingfy is a shopping basket that makes use of React, TypeScript and Redux Toolkit
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Considerations
 
-### `yarn eject`
+Due to the short time constraint I'd like to leave the following considerations:
+- Shortcuts were made! Especially when it comes to TypeScript, the slices could have been handled in a more type safe way by typing properties and respective possible use cases
+- I haven't written any tests. In an ideal project I would have started by writing fundamental unit tests to prevent any logic issues. With more time, end-to-end tests could have been as well
+- Syntax could be more careful. Naming is one of the most burdensome tasks in our job. My principle is, don't overthink, we can always go back to amend.
+- Reusability. I would have built a reusable custom hook for data fetching and also abstract components like the `I` or the `Button`. In a real life scenario, these components would have been abstract in order to promote reusability
+- Compilation. There was a compilation issue when naming `index` to some of the files. Didn't have time to investigate.
+- TypeScript. I'm used to have a separate file `d.ts` for all types. eg. for `Button.tsx` I would have `Button.d.ts`
+- Alert. I would have built a good looking modal to handle the Check Out.
+- State. I would have thought better about the naming convention and the shape of those objects. Ideally I would have store more data than just the quantity and total price
+- A11y. Not built with A11y in mind
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For local development, please follow the below steps:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Clone the repository
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```sh
+git clone https://github.com/FranciscoMCG/shoppingfy.git
+```
 
-## Learn More
+2. Access the project folder
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+cd shoppingfy
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Install dependencies
+
+```sh
+yarn install
+```

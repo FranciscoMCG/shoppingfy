@@ -55,7 +55,6 @@ const ShoppingTotal = () => {
 
   const isEmpty = total === 0;
 
-  console.log(total);
   return (
     <ShoppingTotalContainer>
       {isEmpty && isTouched && <i>There are no items in the basket</i>}
