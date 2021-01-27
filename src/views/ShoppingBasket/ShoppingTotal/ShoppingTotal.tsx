@@ -6,7 +6,7 @@ import colors from 'styles/colors';
 
 const { white, blueLight, greyDark, greyLight } = colors;
 
-const ShoppingTotalContainer = styled.div`
+const TotalContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -40,6 +40,17 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+const ShoppingTotalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const I = styled.span`
+  color: red;
+  font-style: italic;
+  font-size: 1rem;
+`;
+
 const ShoppingTotal = () => {
   const dispatch = useDispatch();
   const { basket, isTouched } = useSelector(basketSelector);
@@ -57,12 +68,14 @@ const ShoppingTotal = () => {
 
   return (
     <ShoppingTotalContainer>
-      {isEmpty && isTouched && <i>There are no items in the basket</i>}
-      <Total>£{total}</Total>
-      <Clear onClick={handleClearClick}>Clear</Clear>
-      <Button disabled={isEmpty} onClick={handleCheckOutClick}>
-        Check Out &gt;
-      </Button>
+      {isEmpty && isTouched && <I>There are no items in the basket</I>}
+      <TotalContainer>
+        <Total>£{total}</Total>
+        <Clear onClick={handleClearClick}>Clear</Clear>
+        <Button disabled={isEmpty} onClick={handleCheckOutClick}>
+          Check Out &gt;
+        </Button>
+      </TotalContainer>
     </ShoppingTotalContainer>
   );
 };
