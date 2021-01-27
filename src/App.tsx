@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { ShoppingBasket } from './views/ShoppingBasket';
+
 const AppContainer = styled.div`
   height: 100vh;
   display: flex;
@@ -8,7 +10,11 @@ const AppContainer = styled.div`
 `;
 
 const App = () => {
-  return <AppContainer>Shopping</AppContainer>;
+  return (
+    <AppContainer>
+      <ShoppingBasket />
+    </AppContainer>
+  );
 };
 
 export default App;
