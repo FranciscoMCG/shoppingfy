@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState, FocusEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import colors from 'styles/colors';
@@ -54,6 +54,7 @@ const ShoppingItem = ({ item }: any) => {
       }),
     );
   const handleClick = () => dispatch(reset({ itemId: item.SKU }));
+  const handleBlur = (e: any) => console.log('d');
 
   const subTotal = parseFloat(basket?.[item.SKU]) || 0;
 
@@ -68,6 +69,7 @@ const ShoppingItem = ({ item }: any) => {
         max='3'
         placeholder='0'
         onChange={handleChange}
+        onBlur={handleBlur}
       />
       <SubTotal>
         {item.currency}

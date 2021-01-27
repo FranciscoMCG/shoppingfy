@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 
+import ShoppingItem from './ShoppingItem/ShoppingItem';
 import { itemsSelector, fetchItems } from 'slices/items';
 
 const ShoppingListContainer = styled.div`
@@ -9,7 +10,6 @@ const ShoppingListContainer = styled.div`
   flex-wrap: wrap;
   margin-bottom: 1.2rem;
 `;
-
 const ShoppingList = () => {
   const dispatch = useDispatch();
 
@@ -23,7 +23,13 @@ const ShoppingList = () => {
 
   if (hasErrors) return <p>Something went wrong...</p>;
 
-  return <ShoppingListContainer>item</ShoppingListContainer>;
+  return (
+    <ShoppingListContainer>
+      {items?.map((item: any, i: number) => (
+        <ShoppingItem key={i} item={item} />
+      ))}
+    </ShoppingListContainer>
+  );
 };
 
 export default ShoppingList;
