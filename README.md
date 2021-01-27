@@ -33,6 +33,7 @@ Due to the short time constraint I'd like to leave the following considerations:
 - Alert. I would have built a good looking modal to handle the Check Out.
 - State. I would have thought better about the naming convention and the shape of those objects. Ideally I would have store more data than just the quantity and total price
 - A11y. Not built with A11y in mind
+- Responsiveness. Built only with basic responsiveness for large mobile and desktop
 
 ## Installation
 
@@ -54,4 +55,15 @@ cd shoppingfy
 
 ```sh
 yarn install
+```
+
+4. Run the server
+
+```sh
+yarn start
+```
+
+5. Open the browser with the url
+```sh
+http://localhost:3000/
 ```
