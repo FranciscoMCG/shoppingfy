@@ -1,14 +1,9 @@
 import styled from 'styled-components';
-import { ChangeEvent, FormEvent, useState, FocusEvent } from 'react';
+import { ChangeEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import colors from 'styles/colors';
-import {
-  basketSelector,
-  qtyChange,
-  reset,
-  getItemQuantity,
-} from 'slices/basket';
+import { basketSelector, qtyChange, reset } from 'slices/basket';
 
 const { greyLight } = colors;
 
@@ -45,14 +40,11 @@ const Delete = styled.button`
 `;
 
 const ShoppingItem = ({ item }: any) => {
-  // const [value, setValue] = useState<number>(0);
-
   const dispatch = useDispatch();
 
   const { basket } = useSelector(basketSelector);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // setValue(parseInt(e.target.value));
     dispatch(
       qtyChange({
         itemId: item.SKU,
@@ -64,10 +56,8 @@ const ShoppingItem = ({ item }: any) => {
 
   const handleClick = () => {
     dispatch(reset({ itemId: item.SKU }));
-    // setValue(0);
   };
 
-  // @ts-ignore
   const subTotal = parseFloat(basket[item.SKU]?.total) || 0;
 
   return (
@@ -81,7 +71,6 @@ const ShoppingItem = ({ item }: any) => {
         max='3'
         placeholder='0'
         onChange={handleChange}
-        // @ts-ignore
         value={basket[item.SKU]?.qty || 0}
       />
       <SubTotal>

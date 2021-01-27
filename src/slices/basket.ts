@@ -5,6 +5,7 @@ import { RootState } from './';
 interface SliceState {
   isTouched: boolean;
   basket: {
+    [key: string]: any;
     qty?: number;
     total?: 0;
   };
@@ -22,7 +23,6 @@ const basketSlice = createSlice({
     qtyChange: (state, action) => {
       const { itemId, value, price } = action.payload;
       state.isTouched = true;
-      // @ts-ignore
       state.basket[itemId] = {
         total: value * price,
         qty: value,
@@ -31,7 +31,6 @@ const basketSlice = createSlice({
     reset: (state, action) => {
       const { itemId } = action.payload;
       state.isTouched = true;
-      // @ts-ignore
       state.basket[itemId] = {
         total: 0,
         qty: 0,
@@ -47,9 +46,5 @@ const basketSlice = createSlice({
 export const { qtyChange, reset, resetAll } = basketSlice.actions;
 
 export const basketSelector = (state: RootState) => state.basket;
-
-export const getItemQuantity = (state: RootState, item: any) =>
-  // @ts-ignore
-  state.basket[item].qty;
 
 export default basketSlice.reducer;

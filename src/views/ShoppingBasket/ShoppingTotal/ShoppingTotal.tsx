@@ -46,7 +46,6 @@ const ShoppingTotal = () => {
 
   const total = Number(
     Object.values(basket)
-      // @ts-ignore
       .reduce((sum: number, n) => sum + n.total, 0)
       .toFixed(2),
   );
