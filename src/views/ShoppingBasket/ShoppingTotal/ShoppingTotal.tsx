@@ -43,13 +43,18 @@ const Button = styled.button`
 const ShoppingTotal = () => {
   const dispatch = useDispatch();
   const { basket } = useSelector(basketSelector) as any;
-  // const basketTotal = basket?.split('').reduce((total: any, { price = 0 }) => total + price, 0) || 0;
+
+  const total = Object.values(basket)
+    .reduce((sum: number, n: any) => sum + n, 0)
+    .toFixed(2);
+  console.log('total', total);
+
   const handleClick = () => dispatch(resetAll());
   const isDisabled = !basket;
   console.log(isDisabled);
   return (
     <ShoppingTotalContainer>
-      <Total>$51.60</Total>
+      <Total>£{total}</Total>
       <Clear onClick={handleClick}>Clear</Clear>
       <Button disabled={isDisabled} onClick={() => console.log('fired')}>
         Check Out &gt;

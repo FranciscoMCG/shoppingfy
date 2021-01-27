@@ -25,7 +25,7 @@ const ShoppingList = () => {
 
   return (
     <ShoppingListContainer>
-      {items?.map((item: any, i: number) => (
+      {items?.map((item, i: number) => (
         <ShoppingItem key={i} item={item} />
       ))}
     </ShoppingListContainer>
