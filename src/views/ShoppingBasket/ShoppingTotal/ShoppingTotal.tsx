@@ -42,21 +42,27 @@ const Button = styled.button`
 
 const ShoppingTotal = () => {
   const dispatch = useDispatch();
-  const { basket } = useSelector(basketSelector) as any;
+  const { basket, isTouched } = useSelector(basketSelector);
 
-  const total = Object.values(basket)
-    .reduce((sum: number, n: any) => sum + n, 0)
-    .toFixed(2);
-  console.log('total', total);
+  const total = Number(
+    Object.values(basket)
+      // @ts-ignore
+      .reduce((sum: number, n) => sum + n.total, 0)
+      .toFixed(2),
+  );
 
-  const handleClick = () => dispatch(resetAll());
-  const isDisabled = !basket;
-  console.log(isDisabled);
+  const handleClearClick = () => dispatch(resetAll());
+  const handleCheckOutClick = () => window.alert(total);
+
+  const isEmpty = total === 0;
+
+  console.log(total);
   return (
     <ShoppingTotalContainer>
+      {isEmpty && isTouched && <i>There are no items in the basket</i>}
       <Total>£{total}</Total>
-      <Clear onClick={handleClick}>Clear</Clear>
-      <Button disabled={isDisabled} onClick={() => console.log('fired')}>
+      <Clear onClick={handleClearClick}>Clear</Clear>
+      <Button disabled={isEmpty} onClick={handleCheckOutClick}>
         Check Out &gt;
       </Button>
     </ShoppingTotalContainer>

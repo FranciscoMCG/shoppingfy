@@ -3,13 +3,17 @@ import { ChangeEvent, FormEvent, useState, FocusEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import colors from 'styles/colors';
-import { basketSelector, amountChange, reset } from 'slices/basket';
+import {
+  basketSelector,
+  qtyChange,
+  reset,
+  getItemQuantity,
+} from 'slices/basket';
 
 const { greyLight } = colors;
 
 const ShoppingItemWrapper = styled.div`
   display: flex;
-  //flex-wrap: wrap;
   width: 100%;
   border-bottom: 1px dashed ${greyLight};
   padding: 1rem 0rem;
@@ -41,22 +45,30 @@ const Delete = styled.button`
 `;
 
 const ShoppingItem = ({ item }: any) => {
-  const [error, setError] = useState<string | null>(null);
+  // const [value, setValue] = useState<number>(0);
 
   const dispatch = useDispatch();
-  const { basket } = useSelector(basketSelector) as any;
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const { basket } = useSelector(basketSelector);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // setValue(parseInt(e.target.value));
     dispatch(
-      amountChange({
+      qtyChange({
         itemId: item.SKU,
-        value: parseInt(e.target.value) * item.price,
+        value: parseInt(e.target.value),
+        price: item.price,
       }),
     );
-  const handleClick = () => dispatch(reset({ itemId: item.SKU }));
-  const handleBlur = (e: any) => !basket[item.SKU] && setError('test');
+  };
 
-  const subTotal = parseFloat(basket?.[item.SKU]) || 0;
+  const handleClick = () => {
+    dispatch(reset({ itemId: item.SKU }));
+    // setValue(0);
+  };
+
+  // @ts-ignore
+  const subTotal = parseFloat(basket[item.SKU]?.total) || 0;
 
   return (
     <ShoppingItemWrapper>
@@ -69,7 +81,8 @@ const ShoppingItem = ({ item }: any) => {
         max='3'
         placeholder='0'
         onChange={handleChange}
-        onBlur={handleBlur}
+        // @ts-ignore
+        value={basket[item.SKU]?.qty || 0}
       />
       <SubTotal>
         {item.currency}
