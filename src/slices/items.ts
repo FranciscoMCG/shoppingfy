@@ -7,7 +7,7 @@ interface Category {
   category: string;
 }
 
-interface Item {
+export interface Item {
   name: string;
   SKU: number;
   price: number;

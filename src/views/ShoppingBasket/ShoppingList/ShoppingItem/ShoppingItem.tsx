@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import colors from 'styles/colors';
 import { basketSelector, qtyChange, reset } from 'slices/basket';
+import { Item } from 'slices/items';
 
 const { greyLight } = colors;
 
@@ -39,7 +40,7 @@ const Delete = styled.button`
   cursor: pointer;
 `;
 
-const ShoppingItem = ({ item }: any) => {
+const ShoppingItem = ({ item }: { item: Item }) => {
   const dispatch = useDispatch();
 
   const { basket } = useSelector(basketSelector);
